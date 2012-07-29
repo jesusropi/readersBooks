@@ -8,7 +8,7 @@ class Person {
 	String firstName
 	String lastName
 	Date   birthday
-	String sex // TODO: to enum ISO/IEC 5218
+	Sex sex 
 	String image // TODO: to object
 
     static constraints = {
