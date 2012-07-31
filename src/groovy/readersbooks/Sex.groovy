@@ -7,8 +7,19 @@ package readersbooks
 	9 = not applicable.
 */
 public enum Sex {
-	NOT_KNOW,
-	MALE,
-	FEMALE,
-	NOT_APPLICABLE
+	NOT_KNOW("No se sabe"),
+	MALE("Hombre"),
+	FEMALE("Mujer"),
+	NOT_APPLICABLE("No aplicable") // For a robot
+	
+	final String value
+	
+	Sex(String value) {
+		this.value = value
+	}
+	
+	String toString() {
+		value
+	}
+	
 }
