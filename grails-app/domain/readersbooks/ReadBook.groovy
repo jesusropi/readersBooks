@@ -10,4 +10,8 @@ class ReadBook {
 	
     static constraints = {
     }
+	
+	String toString(){
+		reader.userName + " - " + book.title
+	}
 }

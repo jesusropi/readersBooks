@@ -14,4 +14,8 @@ class Reader extends Person{
 	
     static constraints = {
     }
+	
+	String toString(){
+		userName
+	}
 }
