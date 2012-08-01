@@ -15,8 +15,9 @@ abstract class Person {
 				 // http://grails.org/Simple+Avatar+Uploader
 	
 	// TODO: Relationships
-	// Country
+	Country country
 
+	
     static constraints = {
 		
     }
