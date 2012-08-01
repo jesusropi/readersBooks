@@ -6,7 +6,7 @@ class Book {
 	String ISBN
 	String synopsis
 	Date year
-	String editorialisima
+	String editorial
 	
 	static belongsTo = Writer
 	static hashMany = [kindBooks: KindBook
