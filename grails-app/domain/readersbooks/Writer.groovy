@@ -1,7 +1,9 @@
 package readersbooks
 
-class Writer {
-
+class Writer extends Person{
+	
+	static hasMany = [books: Book]
+	
     static constraints = {
     }
 }

@@ -2,15 +2,23 @@ package readersbooks
 
 import java.util.Date;
 
-class Person {
+abstract class Person {
 	
 	String name
 	String firstName
 	String lastName
 	Date   birthday
-	String sex // TODO: to enum ISO/IEC 5218
+	Sex sex 
 	String image // TODO: to object
+				 // http://grails.org/plugin/file-uploader
+				 // http://grails.org/plugin/jquery-file-upload
+				 // http://grails.org/Simple+Avatar+Uploader
+	
+	// TODO: Relationships
+	Country country
 
+	
     static constraints = {
+		
     }
 }
