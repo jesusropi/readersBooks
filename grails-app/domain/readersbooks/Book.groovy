@@ -4,11 +4,18 @@ class Book {
 	
 	String title
 	String ISBN
-	String sinopsis
-
+	String synopsis
+	Date year
+	String editorial
+	
 	static belongsTo = Writer
-	static hasMany = [writers: Writer, readBooks: ReadBook] 
+	static hashMany = [kindBooks: KindBook
+	       		  , topicBooks: TopicBook
+                          , writers: Writer
+			  , readBooks: ReadBook] 
 			
-    static constraints = {
+	    static constraints = {
     }
+	
+	String toString(){title}
 }
