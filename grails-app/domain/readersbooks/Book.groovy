@@ -4,10 +4,15 @@ class Book {
 	
 	String title 
 	String ISBN
-	String sinopsis
+	String synopsis
+	Date year
+	String editorial
 	
-	//pruebas
-
+	
+	static hashMany = [kindBooks: KindBook, topicBooks: TopicBook]
+	
     static constraints = {
     }
+	
+	String toString(){title}
 }
