@@ -13,6 +13,8 @@ class Reader extends Person{
 						
 	
     static constraints = {
+		userName blank: false 
+		email email: true, blank: false, unique: true
     }
 	
 	String toString(){

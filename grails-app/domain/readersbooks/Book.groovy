@@ -7,7 +7,7 @@ class Book {
 	String synopsis
 	Date year
 	String editorial
-	
+
 	static belongsTo = Writer
 	static hashMany = [kindBooks: KindBook
 	       		  , topicBooks: TopicBook
@@ -16,6 +16,6 @@ class Book {
 			
 	    static constraints = {
     }
-	
+		
 	String toString(){title}
 }

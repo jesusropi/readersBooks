@@ -1,7 +1,7 @@
 package readersbooks
 
 class Country {
-	// Extraer de: doc/GeoPC_Countries.csv
+	// doc/GeoPC_Countries.csv
 	String name
 	String code // ISO 3166-1 alfa-2 (2 letras)
 
@@ -11,6 +11,7 @@ class Country {
     }
 	
 	String toString (){
-		name
+		name size: 1..32, blank: false, unique: true 
+		code size: 2, blank: false, unique: true
 	}
 }
