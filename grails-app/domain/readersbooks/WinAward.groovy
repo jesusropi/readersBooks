@@ -2,7 +2,7 @@ package readersbooks
 
 class WinAward {
 	
-	Writer writer
+	Author writer
 	Award award
 	Date year
 	

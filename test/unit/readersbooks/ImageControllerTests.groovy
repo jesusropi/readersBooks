@@ -5,9 +5,9 @@ package readersbooks
 import org.junit.*
 import grails.test.mixin.*
 
-@TestFor(ReaderController)
-@Mock(Reader)
-class ReaderControllerTests {
+@TestFor(ImageController)
+@Mock(Image)
+class ImageControllerTests {
 
 
     def populateValidParams(params) {
@@ -18,142 +18,142 @@ class ReaderControllerTests {
 
     void testIndex() {
         controller.index()
-        assert "/reader/list" == response.redirectedUrl
+        assert "/image/list" == response.redirectedUrl
     }
 
     void testList() {
 
         def model = controller.list()
 
-        assert model.readerInstanceList.size() == 0
-        assert model.readerInstanceTotal == 0
+        assert model.imageInstanceList.size() == 0
+        assert model.imageInstanceTotal == 0
     }
 
     void testCreate() {
        def model = controller.create()
 
-       assert model.readerInstance != null
+       assert model.imageInstance != null
     }
 
     void testSave() {
         controller.save()
 
-        assert model.readerInstance != null
-        assert view == '/reader/create'
+        assert model.imageInstance != null
+        assert view == '/image/create'
 
         response.reset()
 
         populateValidParams(params)
         controller.save()
 
-        assert response.redirectedUrl == '/reader/show/1'
+        assert response.redirectedUrl == '/image/show/1'
         assert controller.flash.message != null
-        assert Reader.count() == 1
+        assert Image.count() == 1
     }
 
     void testShow() {
         controller.show()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/reader/list'
+        assert response.redirectedUrl == '/image/list'
 
 
         populateValidParams(params)
-        def reader = new Reader(params)
+        def image = new Image(params)
 
-        assert reader.save() != null
+        assert image.save() != null
 
-        params.id = reader.id
+        params.id = image.id
 
         def model = controller.show()
 
-        assert model.readerInstance == reader
+        assert model.imageInstance == image
     }
 
     void testEdit() {
         controller.edit()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/reader/list'
+        assert response.redirectedUrl == '/image/list'
 
 
         populateValidParams(params)
-        def reader = new Reader(params)
+        def image = new Image(params)
 
-        assert reader.save() != null
+        assert image.save() != null
 
-        params.id = reader.id
+        params.id = image.id
 
         def model = controller.edit()
 
-        assert model.readerInstance == reader
+        assert model.imageInstance == image
     }
 
     void testUpdate() {
         controller.update()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/reader/list'
+        assert response.redirectedUrl == '/image/list'
 
         response.reset()
 
 
         populateValidParams(params)
-        def reader = new Reader(params)
+        def image = new Image(params)
 
-        assert reader.save() != null
+        assert image.save() != null
 
         // test invalid parameters in update
-        params.id = reader.id
+        params.id = image.id
         //TODO: add invalid values to params object
 
         controller.update()
 
-        assert view == "/reader/edit"
-        assert model.readerInstance != null
+        assert view == "/image/edit"
+        assert model.imageInstance != null
 
-        reader.clearErrors()
+        image.clearErrors()
 
         populateValidParams(params)
         controller.update()
 
-        assert response.redirectedUrl == "/reader/show/$reader.id"
+        assert response.redirectedUrl == "/image/show/$image.id"
         assert flash.message != null
 
         //test outdated version number
         response.reset()
-        reader.clearErrors()
+        image.clearErrors()
 
         populateValidParams(params)
-        params.id = reader.id
+        params.id = image.id
         params.version = -1
         controller.update()
 
-        assert view == "/reader/edit"
-        assert model.readerInstance != null
-        assert model.readerInstance.errors.getFieldError('version')
+        assert view == "/image/edit"
+        assert model.imageInstance != null
+        assert model.imageInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 
     void testDelete() {
         controller.delete()
         assert flash.message != null
-        assert response.redirectedUrl == '/reader/list'
+        assert response.redirectedUrl == '/image/list'
 
         response.reset()
 
         populateValidParams(params)
-        def reader = new Reader(params)
+        def image = new Image(params)
 
-        assert reader.save() != null
-        assert Reader.count() == 1
+        assert image.save() != null
+        assert Image.count() == 1
 
-        params.id = reader.id
+        params.id = image.id
 
         controller.delete()
 
-        assert Reader.count() == 0
-        assert Reader.get(reader.id) == null
-        assert response.redirectedUrl == '/reader/list'
+        assert Image.count() == 0
+        assert Image.get(image.id) == null
+        assert response.redirectedUrl == '/image/list'
     }
 }

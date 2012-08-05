@@ -5,9 +5,9 @@ package readersbooks
 import org.junit.*
 import grails.test.mixin.*
 
-@TestFor(ReaderController)
-@Mock(Reader)
-class ReaderControllerTests {
+@TestFor(AuthorController)
+@Mock(Author)
+class AuthorControllerTests {
 
 
     def populateValidParams(params) {
@@ -18,142 +18,142 @@ class ReaderControllerTests {
 
     void testIndex() {
         controller.index()
-        assert "/reader/list" == response.redirectedUrl
+        assert "/author/list" == response.redirectedUrl
     }
 
     void testList() {
 
         def model = controller.list()
 
-        assert model.readerInstanceList.size() == 0
-        assert model.readerInstanceTotal == 0
+        assert model.authorInstanceList.size() == 0
+        assert model.authorInstanceTotal == 0
     }
 
     void testCreate() {
        def model = controller.create()
 
-       assert model.readerInstance != null
+       assert model.authorInstance != null
     }
 
     void testSave() {
         controller.save()
 
-        assert model.readerInstance != null
-        assert view == '/reader/create'
+        assert model.authorInstance != null
+        assert view == '/author/create'
 
         response.reset()
 
         populateValidParams(params)
         controller.save()
 
-        assert response.redirectedUrl == '/reader/show/1'
+        assert response.redirectedUrl == '/author/show/1'
         assert controller.flash.message != null
-        assert Reader.count() == 1
+        assert Author.count() == 1
     }
 
     void testShow() {
         controller.show()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/reader/list'
+        assert response.redirectedUrl == '/author/list'
 
 
         populateValidParams(params)
-        def reader = new Reader(params)
+        def author = new Author(params)
 
-        assert reader.save() != null
+        assert author.save() != null
 
-        params.id = reader.id
+        params.id = author.id
 
         def model = controller.show()
 
-        assert model.readerInstance == reader
+        assert model.authorInstance == author
     }
 
     void testEdit() {
         controller.edit()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/reader/list'
+        assert response.redirectedUrl == '/author/list'
 
 
         populateValidParams(params)
-        def reader = new Reader(params)
+        def author = new Author(params)
 
-        assert reader.save() != null
+        assert author.save() != null
 
-        params.id = reader.id
+        params.id = author.id
 
         def model = controller.edit()
 
-        assert model.readerInstance == reader
+        assert model.authorInstance == author
     }
 
     void testUpdate() {
         controller.update()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/reader/list'
+        assert response.redirectedUrl == '/author/list'
 
         response.reset()
 
 
         populateValidParams(params)
-        def reader = new Reader(params)
+        def author = new Author(params)
 
-        assert reader.save() != null
+        assert author.save() != null
 
         // test invalid parameters in update
-        params.id = reader.id
+        params.id = author.id
         //TODO: add invalid values to params object
 
         controller.update()
 
-        assert view == "/reader/edit"
-        assert model.readerInstance != null
+        assert view == "/author/edit"
+        assert model.authorInstance != null
 
-        reader.clearErrors()
+        author.clearErrors()
 
         populateValidParams(params)
         controller.update()
 
-        assert response.redirectedUrl == "/reader/show/$reader.id"
+        assert response.redirectedUrl == "/author/show/$author.id"
         assert flash.message != null
 
         //test outdated version number
         response.reset()
-        reader.clearErrors()
+        author.clearErrors()
 
         populateValidParams(params)
-        params.id = reader.id
+        params.id = author.id
         params.version = -1
         controller.update()
 
-        assert view == "/reader/edit"
-        assert model.readerInstance != null
-        assert model.readerInstance.errors.getFieldError('version')
+        assert view == "/author/edit"
+        assert model.authorInstance != null
+        assert model.authorInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 
     void testDelete() {
         controller.delete()
         assert flash.message != null
-        assert response.redirectedUrl == '/reader/list'
+        assert response.redirectedUrl == '/author/list'
 
         response.reset()
 
         populateValidParams(params)
-        def reader = new Reader(params)
+        def author = new Author(params)
 
-        assert reader.save() != null
-        assert Reader.count() == 1
+        assert author.save() != null
+        assert Author.count() == 1
 
-        params.id = reader.id
+        params.id = author.id
 
         controller.delete()
 
-        assert Reader.count() == 0
-        assert Reader.get(reader.id) == null
-        assert response.redirectedUrl == '/reader/list'
+        assert Author.count() == 0
+        assert Author.get(author.id) == null
+        assert response.redirectedUrl == '/author/list'
     }
 }

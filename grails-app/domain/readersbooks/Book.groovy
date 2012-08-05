@@ -8,10 +8,10 @@ class Book {
 	Date year
 	String editorial
 
-	static belongsTo = Writer
+	static belongsTo = Author
 	static hashMany = [kindBooks: KindBook
 	       		  , topicBooks: TopicBook
-                          , writers: Writer
+                          , writers: Author
 			  , readBooks: ReadBook] 
 			
 	    static constraints = {
