@@ -45,7 +45,7 @@
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="image.name.label" default="Name" /></span>
 						<span class="property-value" aria-labelledby="name-label">
-							<div id="avatar"><img src="${resource(dir: 'upload/images', file: imageInstance.id + "_" + imageInstance.name + "." + imageInstance.extension)}" alt="Imagen"/></a></div>																						
+							<div id="avatar"><img class="avatar" src="${resource(dir: 'upload/images', file: imageInstance.fileName)}" alt="Imagen"/></div>																						
 						</span>
 				</li>
 				</g:if>

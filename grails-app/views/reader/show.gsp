@@ -59,14 +59,21 @@
 				</li>
 				</g:if>
 			
+			
 				<g:if test="${readerInstance?.image}">
 				<li class="fieldcontain">
 					<span id="image-label" class="property-label"><g:message code="reader.image.label" default="Image" /></span>
-					
-						<span class="property-value" aria-labelledby="image-label"><g:fieldValue bean="${readerInstance}" field="image"/></span>
-					
+					<img class="avatar" src="${resource(dir: 'upload/images', file: readerInstance.image.fileName)}" alt="Imagen"/>									
 				</li>
 				</g:if>
+				<g:else>
+					<li class="fieldcontain">
+						<span id="image-label" class="property-label"><g:message code="reader.image.label" default="Image" /></span>
+						<span class="property-value" aria-labelledby="image-label"><g:link controller="image" action="create" params="[readerId:readerInstance.id]">Añadir una imagen</g:link></span>
+					</li>
+				</g:else>
+				
+				
 			
 				<g:if test="${readerInstance?.userName}">
 				<li class="fieldcontain">

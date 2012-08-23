@@ -23,7 +23,7 @@
 		<g:message code="reader.birthday.label" default="Birthday" />
 		
 	</label>
-	<g:datePicker name="birthday" format="dd-MM-yyyy" precision="day"  value="${readerInstance?.birthday}" default="none" noSelection="['': '']" />
+	<g:datePicker name="birthday" precision="day"  value="${readerInstance?.birthday}" default="none" noSelection="['': '']" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: readerInstance, field: 'country', 'error')} ">
@@ -39,7 +39,7 @@
 		<g:message code="reader.image.label" default="Image" />
 		
 	</label>
-	<g:textField name="image" value="${readerInstance?.image}"/>
+	<g:select id="image" name="image.id" from="${readersbooks.Image.list()}" optionKey="id" value="${readerInstance?.image?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: readerInstance, field: 'userName', 'error')} required">

@@ -11,15 +11,12 @@ abstract class Person {
 	Sex sex 
 	Country country
 	Image 	image
-				 // TODO: to object
-				 // http://grails.org/plugin/file-uploader
-				 // http://grails.org/plugin/jquery-file-upload
-				 // http://grails.org/Simple+Avatar+Uploader
 	
     static constraints = {
 			name blank: false
 			firstName blank: false 
 			birthday nullable: true
 			country nullable: true
+			image nullable: true
     }
 }

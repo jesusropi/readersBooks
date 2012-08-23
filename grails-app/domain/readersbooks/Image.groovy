@@ -8,4 +8,8 @@ class Image {
     static constraints = {
     }
 	
+	String getFileName(){
+		id + "_" + name + "." + extension
+	}
+
 }

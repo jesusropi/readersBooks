@@ -24,15 +24,21 @@
 				<thead>
 					<tr>
 					
+						<th>Imagen</th>
+					
 						<g:sortableColumn property="extension" title="${message(code: 'image.extension.label', default: 'Extension')}" />
 					
 						<g:sortableColumn property="name" title="${message(code: 'image.name.label', default: 'Name')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${imageInstanceList}" status="i" var="imageInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+						<td>
+							<img class="avatar" src="${resource(dir: 'upload/images', file: imageInstance.fileName)}" alt="Imagen"/>
+						</td>
 					
 						<td><g:link action="show" id="${imageInstance.id}">${fieldValue(bean: imageInstance, field: "extension")}</g:link></td>
 					

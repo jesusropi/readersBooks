@@ -24,6 +24,8 @@
 				<thead>
 					<tr>
 					
+						<th><g:message code="reader.image.label" default="Image" /></th>
+					
 						<g:sortableColumn property="name" title="${message(code: 'reader.name.label', default: 'Name')}" />
 					
 						<g:sortableColumn property="firstName" title="${message(code: 'reader.firstName.label', default: 'First Name')}" />
@@ -31,8 +33,6 @@
 						<g:sortableColumn property="birthday" title="${message(code: 'reader.birthday.label', default: 'Birthday')}" />
 					
 						<th><g:message code="reader.country.label" default="Country" /></th>
-					
-						<g:sortableColumn property="image" title="${message(code: 'reader.image.label', default: 'Image')}" />
 					
 						<g:sortableColumn property="userName" title="${message(code: 'reader.userName.label', default: 'User Name')}" />
 					
@@ -42,6 +42,15 @@
 				<g:each in="${readerInstanceList}" status="i" var="readerInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
+						<td>
+							<g:if test="${readerInstance.image}">
+								<img class="avatar" src="${resource(dir: 'upload/images', file: readerInstance.image.fileName)}" alt="Imagen"/>
+							</g:if>
+							<g:else>
+								<img class="avatar" src="${resource(dir: 'upload/images', file: 'default-avatar.gif')}" alt="Imagen"/>
+							</g:else>	
+						</td>
+						
 						<td><g:link action="show" id="${readerInstance.id}">${fieldValue(bean: readerInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: readerInstance, field: "firstName")}</td>
@@ -49,8 +58,6 @@
 						<td><g:formatDate date="${readerInstance.birthday}" /></td>
 					
 						<td>${fieldValue(bean: readerInstance, field: "country")}</td>
-					
-						<td>${fieldValue(bean: readerInstance, field: "image")}</td>
 					
 						<td>${fieldValue(bean: readerInstance, field: "userName")}</td>
 					

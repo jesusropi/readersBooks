@@ -17,7 +17,11 @@ class ImageController {
     }
 
     def create() {
-        [imageInstance: new Image(params)]
+        [imageInstance: new Image(params)
+			, readerId: params.readerId
+			, authorId: params.authorId
+			, bookId: params.bookId 
+		]
     }
 
     def save() {
@@ -34,7 +38,11 @@ class ImageController {
 		imageInstance.extension = ""
 		
 		if (!imageInstance.save(flush: true)) {
-            render(view: "create", model: [imageInstance: imageInstance])
+            render(view: "create", model: [imageInstance: imageInstance
+					, readerId: params.readerId
+					, authorId: params.authorId
+					, bookId: params.bookId 
+				])
             return
         }
 		
@@ -48,9 +56,28 @@ class ImageController {
 			imageInstance.name = fileName[ -2 ]
 			imageInstance.extension = fileName[ -1 ]
 		}
-		String name = imageInstance.id + "_" + imageInstance.name + "." + imageInstance.extension   
- 
+		String name = imageInstance.fileName
+		
 		f.transferTo(new File(storagePath + "/" + name))
+		// Save the property of the image
+		if (params.readerId) {
+			def reader = Reader.get(params.long('readerId'))
+			log.error(params.long('readerId'))
+			assert reader
+			assert imageInstance
+			reader.image = imageInstance
+			reader.save()
+		}else if (params.authorId){
+			def author = Author.get(params.long('authorId'))
+			author.image = imageInstance
+			author.save() 	
+		}else if (params.bookId){
+			def book = Book.get(params.long('bookId'))
+			book.image = imageInstance
+			book.save()	
+		}	
+		//
+		
 				
 		flash.message = message(code: 'default.created.message', args: [message(code: 'image.label', default: 'Image'), imageInstance.id])
         redirect(action: "show", id: imageInstance.id)

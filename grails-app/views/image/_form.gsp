@@ -7,6 +7,8 @@
 		
 	</label>
     <input type="file" name="myFile" />
-	<%-- <g:textField name="name" value="${imageInstance?.name}"/>  --%>
+    <input type="hidden" name="readerId" value="${readerId}" />
+    <input type="hidden" name="authorId" value="${authorId}" />
+    <input type="hidden" name="bookId" value="${bookId}" />
 </div>
 
