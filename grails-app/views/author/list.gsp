@@ -23,7 +23,9 @@
 			<table>
 				<thead>
 					<tr>
-					
+
+						<th><g:message code="author.image.label" default="Image" /></th>
+		
 						<g:sortableColumn property="name" title="${message(code: 'author.name.label', default: 'Name')}" />
 					
 						<g:sortableColumn property="firstName" title="${message(code: 'author.firstName.label', default: 'First Name')}" />
@@ -32,8 +34,6 @@
 					
 						<th><g:message code="author.country.label" default="Country" /></th>
 					
-						<th><g:message code="author.image.label" default="Image" /></th>
-					
 						<g:sortableColumn property="lastName" title="${message(code: 'author.lastName.label', default: 'Last Name')}" />
 					
 					</tr>
@@ -41,6 +41,15 @@
 				<tbody>
 				<g:each in="${authorInstanceList}" status="i" var="authorInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+						<td>
+							<g:if test="${authorInstance.image}">
+								<img class="avatar" src="${resource(dir: 'upload/images', file: authorInstance.image.fileName)}" alt="Imagen"/>
+							</g:if>
+							<g:else>
+								<img class="avatar" src="${resource(dir: 'upload/images', file: 'default-avatar.gif')}" alt="Imagen"/>
+							</g:else>	
+						</td>
 					
 						<td><g:link action="show" id="${authorInstance.id}">${fieldValue(bean: authorInstance, field: "name")}</g:link></td>
 					
@@ -49,8 +58,6 @@
 						<td><g:formatDate date="${authorInstance.birthday}" /></td>
 					
 						<td>${fieldValue(bean: authorInstance, field: "country")}</td>
-					
-						<td>${fieldValue(bean: authorInstance, field: "image")}</td>
 					
 						<td>${fieldValue(bean: authorInstance, field: "lastName")}</td>
 					

@@ -23,6 +23,19 @@
 			</g:if>
 			<ol class="property-list author">
 			
+				<g:if test="${authorInstance?.image}">
+				<li class="fieldcontain">
+					<span id="image-label" class="property-label"><g:message code="author.image.label" default="Image" /></span>
+					<img class="avatar" src="${resource(dir: 'upload/images', file: authorInstance.image.fileName)}" alt="Imagen"/>									
+				</li>
+				</g:if>
+				<g:else>
+					<li class="fieldcontain">
+						<span id="image-label" class="property-label"><g:message code="author.image.label" default="Image" /></span>
+						<span class="property-value" aria-labelledby="image-label"><g:link controller="image" action="create" params="[authorId:authorInstance.id]">Añadir una imagen</g:link></span>
+					</li>
+				</g:else>
+			
 				<g:if test="${authorInstance?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="author.name.label" default="Name" /></span>
@@ -59,14 +72,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${authorInstance?.image}">
-				<li class="fieldcontain">
-					<span id="image-label" class="property-label"><g:message code="author.image.label" default="Image" /></span>
-					
-						<span class="property-value" aria-labelledby="image-label"><g:link controller="image" action="show" id="${authorInstance?.image?.id}">${authorInstance?.image?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
 			
 				<g:if test="${authorInstance?.books}">
 				<li class="fieldcontain">

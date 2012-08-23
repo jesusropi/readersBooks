@@ -7,14 +7,16 @@ class Book {
 	String synopsis
 	Date year
 	String editorial
-
+	Image  image
+	
 	static belongsTo = Author
 	static hashMany = [kindBooks: KindBook
 	       		  , topicBooks: TopicBook
                           , writers: Author
 			  , readBooks: ReadBook] 
 			
-	    static constraints = {
+	static constraints = {
+		image nullable: true
     }
 		
 	String toString(){title}

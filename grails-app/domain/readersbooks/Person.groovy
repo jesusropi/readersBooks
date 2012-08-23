@@ -14,7 +14,8 @@ abstract class Person {
 	
     static constraints = {
 			name blank: false
-			firstName blank: false 
+			firstName blank: false
+			lastName nullable: true 
 			birthday nullable: true
 			country nullable: true
 			image nullable: true
