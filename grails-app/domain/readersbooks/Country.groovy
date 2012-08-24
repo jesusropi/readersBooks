@@ -8,10 +8,11 @@ class Country {
 	static hasMany = [ persons: Person ]
 	
 	static constraints = {
+		name length: 1..32, blank: false, unique: true 
+		code length: 2, blank: false, unique: true
     }
 	
 	String toString (){
-		name size: 1..32, blank: false, unique: true 
-		code size: 2, blank: false, unique: true
+           name
 	}
 }
