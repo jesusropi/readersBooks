@@ -7,7 +7,9 @@ class Kind {
 	 */
 	
 	String kind
-
+	
+	static hasMany = [ kindBooks: KindBook ]
+	
     static constraints = {
 		//king (nullable: false)
     }
