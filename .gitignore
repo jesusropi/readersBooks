@@ -5,3 +5,4 @@ target
 .settings
 target-eclipse
 web-app/upload
+stacktrace.log

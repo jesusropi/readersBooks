@@ -25,8 +25,11 @@ environments {
     }
     production {
         dataSource {
+			driverClassName = "com.mysql.jdbc.Driver"
+			username = "readersbooks_u"
+			password = "infrarrealismo2666"
             dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            url = "jdbc:mysql://localhost/readersbooks?autoReconnect=true&useUnicode=true&characterEncoding=UTF8"
             pooled = true
             properties {
                maxActive = -1

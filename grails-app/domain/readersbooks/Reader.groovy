@@ -19,7 +19,7 @@ class Reader extends Person{
 						]
 	
     static constraints = {
-		userName blank: false 
+		userName blank: false, unique: true
 		email email: true, blank: false, unique: true
     }
 	

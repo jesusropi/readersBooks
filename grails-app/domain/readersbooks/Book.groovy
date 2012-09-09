@@ -3,31 +3,36 @@ package readersbooks
 class Book {
 	
 	String title
-	String ISBN
+	String isbn
 	String synopsis
 	Date year
 	String editorial
 	Image  image
+	Author author
 	
-	static belongsTo = Author
+	//static belongsTo = Author
 	
-	static hashMany = [kindBooks: KindBook
+	static hasMany = [kindBooks: KindBook
 	       		  	,topicBooks: TopicBook
-					, writers: Author
 					, readBooks: ReadBook] 
 			
 	static constraints = {
+		isbn unique: true
+		synopsis nullable: true
+		year nullable: true
+		editorial nullable: true
 		image nullable: true
+		author nullable: true
     }
 		
 	String toString(){title}
 	
 	List<Kind> kinds(){
-		this.kindBooks.collect {it.kind}
+		kindBooks.collect {it.kind}
 	}
 	
 	List<Topic> topics(){
-		this.topicBooks.collect {it.topic}
+		topicBooks.collect {it.topic}
 	}
 	
 	KindBook addToKinds(Kind kind){

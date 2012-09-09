@@ -14,7 +14,9 @@ class KindBook {
 		if (!kb) {
 			kb = new KindBook()
 			book.addToKindBooks(kb) 
-			kind.addToKindBooks(kb) 
+			kind.addToKindBooks(kb)
+			//kb.kind = kind
+			//kb.book = book 
 			kb.save()
 		}
 		return kb

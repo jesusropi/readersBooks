@@ -14,9 +14,11 @@ class TopicBook {
 			tp = new TopicBook()
 			book.addToTopicBooks(tp) 
 			topic.addToTopicBooks(tp) 
+			//tp.topic = topic
+			//tp.book = book
 			tp.save()
 		}
-		return tp
+		tp
 	}
 
 	static void unlink(Topic topic, Book book) {

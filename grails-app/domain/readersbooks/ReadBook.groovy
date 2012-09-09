@@ -12,7 +12,7 @@ class ReadBook {
     }
 	
 	String toString(){
-		reader.userName + " - " + book.title
+		reader?.userName + " - " + book?.title
 	}
 	
 	static ReadBook link(Reader reader, Book book) {
@@ -20,7 +20,7 @@ class ReadBook {
 		if (!rb) {
 			rb = new ReadBook()
 			reader.addToReadBooks(rb) 
-			book.addToReadBooks(rb) 
+			book.addToReadBooks(rb)
 			rb.save()
 		}
 		return rb

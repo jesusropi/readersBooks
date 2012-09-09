@@ -13,11 +13,13 @@ class Follow {
 	}
 	
 	static Follow link(Reader follower, Reader leader) {
+		
 		Follow f = Follow.findByFollowerAndLeader(follower, leader) 
+		
 		if (!f) {
 			f = new Follow()
 			follower.addToFollowers(f) 
-			leader.addToLeaders(f) 
+			leader.addToLeaders(f)
 			f.save()
 		}
 		return f

@@ -4,6 +4,7 @@ class Author extends Person{
 
 	static hasMany = [books: Book]
 	
-    static constraints = {
-    }
+	static constraints = {
+	}
+	
 }

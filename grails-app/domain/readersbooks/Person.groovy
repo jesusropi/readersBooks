@@ -8,7 +8,7 @@ abstract class Person {
 	String firstName
 	String lastName
 	Date   birthday
-	Sex sex 
+	Sex 	sex 
 	Country country
 	Image 	image
 	
@@ -20,4 +20,8 @@ abstract class Person {
 			country nullable: true
 			image nullable: true
     }
+	
+	String toString(){
+		name + " " + firstName
+	}
 }
