@@ -140,16 +140,14 @@ class SampleData {
 			/*,image:*/	
 			)
 		mySave([wa, he, an, na, pau, wal, al])
-		
-		ServletContext sc = ServletContextHolder.getServletContext()
-		String path = sc.getRealPath( "sample" )
 
-		File waF = new File(path + "/walter_scott.jpg")
-		assert  waF.exists()
-		
-		ImageService imageService = new ImageService()
-		
-		imageService.save(waF, wa)
+		addImage("walter_scott.jpg", wa)
+		addImage("melville.jpg", he)
+		addImage("angel_gonzalez.jpg", an)
+		addImage("natsume_soseki.jpg", na)
+		addImage("paul_auster.jpg", pau)
+		addImage("walt_whitman.jpg", wal)
+		addImage("allen_gisberg.jpg", al)
 		
 		wa.addToBooks(ro)
 		he.addToBooks(mo)
@@ -300,7 +298,17 @@ class SampleData {
 			}
 		}
 	}
-	
+
+	static void addImage(String image, def domainWithImage) {
+		ServletContext sc = ServletContextHolder.getServletContext()
+		String path = sc.getRealPath( "sample" )
+		File f = new File(path + "/" + image)
+		assert f.exists()
+		ImageService imageService = new ImageService()
+		imageService.save(f, domainWithImage)
+	}
+
+		
 /*
     public class log {  
     	static void error(String message) {
