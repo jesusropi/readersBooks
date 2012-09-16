@@ -1,5 +1,11 @@
 package readersbooks
 
+
+import javax.servlet.ServletContext
+import org.codehaus.groovy.grails.web.context.ServletContextHolder
+
+
+
 class SampleData {
 	
 	static public loadData(){
@@ -134,6 +140,16 @@ class SampleData {
 			/*,image:*/	
 			)
 		mySave([wa, he, an, na, pau, wal, al])
+		
+		ServletContext sc = ServletContextHolder.getServletContext()
+		String path = sc.getRealPath( "sample" )
+
+		File waF = new File(path + "/walter_scott.jpg")
+		assert  waF.exists()
+		
+		ImageService imageService = new ImageService()
+		
+		imageService.save(waF, wa)
 		
 		wa.addToBooks(ro)
 		he.addToBooks(mo)
