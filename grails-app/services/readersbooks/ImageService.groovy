@@ -10,7 +10,9 @@ class ImageService {
 		assert domainWithImage
 		assert imageInstance
 		domainWithImage.image = imageInstance
-		domainWithImage.save()
+		assert domainWithImage.save(flush:true)
+		//assert domainWithImage.save()
+		assert domainWithImage.image
     }
 
 	private saveFile(File file){

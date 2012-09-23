@@ -37,11 +37,11 @@
 				</g:else>
 
 			
-				<g:if test="${bookInstance?.ISBN}">
+				<g:if test="${bookInstance?.isbn}">
 				<li class="fieldcontain">
-					<span id="ISBN-label" class="property-label"><g:message code="book.ISBN.label" default="ISBN" /></span>
+					<span id="isbn-label" class="property-label"><g:message code="book.isbn.label" default="ISBN" /></span>
 					
-						<span class="property-value" aria-labelledby="ISBN-label"><g:fieldValue bean="${bookInstance}" field="ISBN"/></span>
+						<span class="property-value" aria-labelledby="isbn-label"><g:fieldValue bean="${bookInstance}" field="isbn"/></span>
 					
 				</li>
 				</g:if>

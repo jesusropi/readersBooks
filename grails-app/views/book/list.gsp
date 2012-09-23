@@ -26,7 +26,7 @@
 					
 						<th><g:message code="book.image.label" default="Image" /></th>
 						
-						<g:sortableColumn property="ISBN" title="${message(code: 'book.ISBN.label', default: 'ISBN')}" />
+						<g:sortableColumn property="isbn" title="${message(code: 'book.isbn.label', default: 'isbn')}" />
 					
 						<g:sortableColumn property="editorial" title="${message(code: 'book.editorial.label', default: 'Editorial')}" />
 					
@@ -51,7 +51,7 @@
 							</g:else>	
 						</td>					
 					
-						<td><g:link action="show" id="${bookInstance.id}">${fieldValue(bean: bookInstance, field: "ISBN")}</g:link></td>
+						<td><g:link action="show" id="${bookInstance.id}">${fieldValue(bean: bookInstance, field: "isbn")}</g:link></td>
 					
 						<td>${fieldValue(bean: bookInstance, field: "editorial")}</td>
 					

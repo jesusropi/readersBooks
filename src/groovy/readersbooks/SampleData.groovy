@@ -73,9 +73,17 @@ class SampleData {
 			 /*,image: */
 		)
  
- 
 		mySave([ ro, mo, pa, bo, di, ho, au, le])
-		
+
+		addImage("rob_roy.png",ro)
+		addImage("moby_dick.png",mo)
+		addImage("palabra_sobre_palabra.jpg",pa)
+		addImage("botchan.jpg",bo)
+		addImage("diario_de_invierno.jpg",di)
+		addImage("hojas_de_hierba.jpg",ho)
+		addImage("aullido.jpg",au)
+		addImage("leviathan.jpg",le)
+
 		Author wa = new Author(
 			name: "Walter"
 			,firstName: "Scott"
@@ -232,7 +240,10 @@ class SampleData {
 			)
 		
 		mySave([je, ma, da])
-		
+
+		addImage("prof.png",je)				
+		addImage("leela.png",ma)				
+		addImage("kiff.jpg",da)				
 		
 		je.addToFollowers(da)
 		je.addToFollowers(ma)
